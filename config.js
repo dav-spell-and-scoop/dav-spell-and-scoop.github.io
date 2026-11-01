@@ -1,11 +1,11 @@
 window.CFG=(()=>{
-const FONT='Sarabun'; 
-const GAME='SPELL & SCOOP';
+const FONT='Sarabun'; // ฟอนต์จาก Google Fonts (ต้องรองรับภาษาไทย) เช่น Noto Sans Thai, IBM Plex Sans Thai, Prompt, Noto Serif Thai, Trirong
+const GAME='ชื่อร้าน';
 const IMG='img/';
-const ROD={file:'stick.PNG',th:14,hx:244,hy:292}; 
-const REST=326; 
-const HOVER=155;
-const BGDARK=0.45;
+const ROD={file:'stick.PNG',th:14,hx:244,hy:292}; // ไม้: th=ความหนา, hx,hy=จุดที่คนขายถือไม้
+const REST=326; // ความสูงที่ไอศกรีมวางบนโคน: ลดค่า = ลอยสูงขึ้น, เพิ่มค่า = จมลงในโคนมากขึ้น
+const HOVER=155; // ความสูงที่ลูกไอศกรีมลอยรอเหนือโคน
+const BGDARK=0.45; // ความเข้มของฟิลเตอร์มืดทับพื้นหลัง: 0 = เดิม, 0.45 = เข้มขึ้นพอดี, 0.7 = มืดมาก
 const CONE_STEP=16; // ระยะที่โคนซ้อนแต่ละอันโผล่ขึ้นมา
 const SCOOP_STEP=48; // ระยะห่างแนวตั้งของไอศกรีมแต่ละลูกที่ซ้อนกัน
 /* ขนาดของ "ส่วนที่มองเห็นจริง" ของภาพ (trim:1 = ตัดขอบโปร่งใสของไฟล์ให้อัตโนมัติ) ปรับ w,h ที่นี่เพื่อให้โคนกับไอศกรีมสมดุลกัน
@@ -19,8 +19,8 @@ const VB={x:200,y:170,w:160,h:179,cut:0,trim:1}; // กรอบคนขาย 
 const SLOTS={
  bg:{file:'bg.PNG',x:0,y:0,w:360,h:520,label:'พื้นหลัง',fit:'xMidYMid slice',fill:'#1a0a10'},
  curtainL:{file:'curtain_left.PNG',x:-4,y:-4,w:130,h:366,label:'ม่านซ้าย',cut:0,trim:1,stretch:1},
- curtainR:{file:'curtain_right.PNG',x:231,y:-4,w:133,h:352,label:'ม่านขวา',cut:0,trim:1,stretch:1},
- curtainT:{file:'curtain_Top.PNG',x:122,y:5,w:111,h:50,label:'ม่านบนกลาง',cut:0,trim:1,stretch:1},
+ curtainR:{file:'curtain_right.PNG',x:234,y:-4,w:130,h:366,label:'ม่านขวา',cut:0,trim:1,stretch:1},
+ curtainT:{file:'curtain_Top.PNG',x:119.4,y:5,w:121.2,h:45.6,label:'ม่านบนกลาง',cut:0,trim:0,stretch:0},
  vendor1:{file:'vendor1.PNG',...VB,label:'คนขายคนที่ 1'},vendor1Laugh:{file:'vendor1_laugh.PNG',...VB,noph:1},
  vendor2:{file:'vendor2.PNG',...VB,label:'คนขายคนที่ 2'},vendor2Laugh:{file:'vendor2_laugh.PNG',...VB,noph:1},
  table:{file:'table.PNG',x:0,y:350,w:360,h:186,label:'โต๊ะ',cut:0,trim:1,stretch:1}, // stretch:1 = ยืดให้เต็มกรอบพอดี (ขอบล่างล้นออกนอกฉากเล็กน้อยเพื่อไม่ให้เห็นพื้นหลังใต้โต๊ะ)
