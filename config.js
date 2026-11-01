@@ -3,27 +3,27 @@ const FONT='Sarabun'; // ฟอนต์จาก Google Fonts (ต้องร�
 const GAME='ชื่อร้าน';
 const IMG='img/';
 const ROD={file:'stick.PNG',th:14,hx:244,hy:292}; // ไม้: th=ความหนา, hx,hy=จุดที่คนขายถือไม้
-const REST=373; // ความสูงที่ไอศกรีมวางบนโคน: ลดค่า = ลอยสูงขึ้น, เพิ่มค่า = จมลงในโคนมากขึ้น
-const HOVER=155;
+const REST=326; // ความสูงที่ไอศกรีมวางบนโคน: ลดค่า = ลอยสูงขึ้น, เพิ่มค่า = จมลงในโคนมากขึ้น
+const HOVER=155; // ความสูงที่ลูกไอศกรีมลอยรอเหนือโคน
 const BGDARK=0.45; // ความเข้มของฟิลเตอร์มืดทับพื้นหลัง: 0 = เดิม, 0.45 = เข้มขึ้นพอดี, 0.7 = มืดมาก
-const CONE_STEP=13; // ระยะที่โคนซ้อนแต่ละอันโผล่ขึ้นมา
-const SCOOP_STEP=56; // ระยะห่างแนวตั้งของไอศกรีมแต่ละลูกที่ซ้อนกัน
+const CONE_STEP=16; // ระยะที่โคนซ้อนแต่ละอันโผล่ขึ้นมา
+const SCOOP_STEP=48; // ระยะห่างแนวตั้งของไอศกรีมแต่ละลูกที่ซ้อนกัน
 /* ขนาดของ "ส่วนที่มองเห็นจริง" ของภาพ (trim:1 = ตัดขอบโปร่งใสของไฟล์ให้อัตโนมัติ) ปรับ w,h ที่นี่เพื่อให้โคนกับไอศกรีมสมดุลกัน
    CONE = โคน (x,y = มุมซ้ายบนในฉาก 360x520), SCOOP = ลูกไอศกรีม (x,y เทียบกับจุดปลายไม้ ให้ศูนย์กลางอยู่ที่ 0,0) */
-const CONE={x:142,y:398,w:76,h:103,trim:1};
-const SCOOP={x:-44,y:-37,w:88,h:75,trim:1};
-const CONE_HELD={x:-38,y:-51,w:76,h:103,trim:1}; // ความสูงที่ลูกไอศกรีมลอยรอเหนือโคน
+const CONE={x:128,y:353,w:116,h:163,trim:1}; // โคนบนโต๊ะ (ตามภาพที่ต้องการ)
+const SCOOP={x:-44,y:-36,w:88,h:72,trim:1}; // ลูกไอศกรีม
+const CONE_HELD={x:-26,y:-36,w:52,h:72,trim:1}; // โคนที่คนขายถือบนไม้ (ตอนซ้อนโคน)
 const FLAVORS=['วานิลลา','สตรอว์เบอร์รี','รัม เรซิ่น','ช็อกโกแลต']; // ชื่อ 4 รส ตรงกับ Ice_vanila=วานิลลา, Ice_staberry=สตรอว์เบอร์รี, Ice_Raisin=รัม เรซิ่น, Ice_choc=ช็อกโกแลต ตามลำดับ
-const VB={x:200,y:165,w:160,h:190,cut:0}; // กรอบคนขาย (ทั้ง 2 คนใช้กรอบเดียวกัน) cut:0 = ภาพมีขอบขาวในตัวแล้ว ไม่ต้องใส่ซ้ำ
+const VB={x:200,y:170,w:160,h:179,cut:0,trim:1}; // กรอบคนขาย (ทั้ง 2 คนใช้กรอบเดียวกัน) cut:0 = ภาพมีขอบขาวในตัวแล้ว ไม่ต้องใส่ซ้ำ
 /* ฉาก 360 กว้าง x 520 สูง (สัดส่วนเดียวกับภาพ 604x873) | file = ชื่อไฟล์ในโฟลเดอร์ img (พิมพ์เล็กใหญ่ให้ตรง) | x,y,w,h = ตำแหน่งและขนาด | cut:0 = ไม่ใส่ขอบขาวดำเพิ่ม */
 const SLOTS={
  bg:{file:'bg.PNG',x:0,y:0,w:360,h:520,label:'พื้นหลัง',fit:'xMidYMid slice',fill:'#1a0a10'},
- curtainL:{file:'curtain_left.PNG',x:0,y:0,w:125,h:358,label:'ม่านซ้าย',cut:0},
- curtainR:{file:'curtain_right.PNG',x:235,y:0,w:125,h:358,label:'ม่านขวา',cut:0},
- curtainT:{file:'curtain_Top.PNG',x:122,y:0,w:116,h:50,label:'ม่านบนกลาง',cut:0},
+ curtainL:{file:'curtain_left.PNG',x:0,y:0,w:125,h:361,label:'ม่านซ้าย',cut:0,trim:1},
+ curtainR:{file:'curtain_right.PNG',x:232,y:0,w:128,h:348,label:'ม่านขวา',cut:0,trim:1},
+ curtainT:{file:'curtain_Top.PNG',x:122,y:0,w:111,h:49,label:'ม่านบนกลาง',cut:0,trim:1},
  vendor1:{file:'vendor1.PNG',...VB,label:'คนขายคนที่ 1'},vendor1Laugh:{file:'vendor1_laugh.PNG',...VB,noph:1},
  vendor2:{file:'vendor2.PNG',...VB,label:'คนขายคนที่ 2'},vendor2Laugh:{file:'vendor2_laugh.PNG',...VB,noph:1},
- table:{file:'table.PNG',x:0,y:350,w:360,h:170,label:'โต๊ะ',cut:0},
+ table:{file:'table.PNG',x:0,y:352,w:360,h:168,label:'โต๊ะ',cut:0,trim:1,stretch:1}, // stretch:1 = ยืดให้เต็มกรอบพอดี
  cone1:{file:'Ice_Cream Cone.PNG',...CONE,label:'โคนแบบที่ 1 (โคนเริ่มต้น)'},
  cone2:{file:'Ice_Cream Cone_choc.PNG',...CONE,label:'โคนแบบที่ 2 (โคนที่ซ้อนสลับ)'},
  blob1:{file:'Ice_vanila.PNG',...SCOOP,label:'ไอศกรีม '+FLAVORS[0]},
