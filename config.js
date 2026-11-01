@@ -18,12 +18,12 @@ const VB={x:200,y:170,w:160,h:179,cut:0,trim:1}; // กรอบคนขาย 
 /* ฉาก 360 กว้าง x 520 สูง (สัดส่วนเดียวกับภาพ 604x873) | file = ชื่อไฟล์ในโฟลเดอร์ img (พิมพ์เล็กใหญ่ให้ตรง) | x,y,w,h = ตำแหน่งและขนาด | cut:0 = ไม่ใส่ขอบขาวดำเพิ่ม */
 const SLOTS={
  bg:{file:'bg.PNG',x:0,y:0,w:360,h:520,label:'พื้นหลัง',fit:'xMidYMid slice',fill:'#1a0a10'},
- curtainL:{file:'curtain_left.PNG',x:0,y:0,w:125,h:361,label:'ม่านซ้าย',cut:0,trim:1},
- curtainR:{file:'curtain_right.PNG',x:232,y:0,w:128,h:348,label:'ม่านขวา',cut:0,trim:1},
- curtainT:{file:'curtain_Top.PNG',x:122,y:0,w:111,h:49,label:'ม่านบนกลาง',cut:0,trim:1},
+ curtainL:{file:'curtain_left.PNG',x:-4,y:-4,w:130,h:366,label:'ม่านซ้าย',cut:0,trim:1,stretch:1},
+ curtainR:{file:'curtain_right.PNG',x:231,y:-4,w:133,h:352,label:'ม่านขวา',cut:0,trim:1,stretch:1},
+ curtainT:{file:'curtain_Top.PNG',x:122,y:-3,w:111,h:52,label:'ม่านบนกลาง',cut:0,trim:1,stretch:1},
  vendor1:{file:'vendor1.PNG',...VB,label:'คนขายคนที่ 1'},vendor1Laugh:{file:'vendor1_laugh.PNG',...VB,noph:1},
  vendor2:{file:'vendor2.PNG',...VB,label:'คนขายคนที่ 2'},vendor2Laugh:{file:'vendor2_laugh.PNG',...VB,noph:1},
- table:{file:'table.PNG',x:0,y:352,w:360,h:168,label:'โต๊ะ',cut:0,trim:1,stretch:1}, // stretch:1 = ยืดให้เต็มกรอบพอดี
+ table:{file:'table.PNG',x:0,y:350,w:360,h:186,label:'โต๊ะ',cut:0,trim:1,stretch:1}, // stretch:1 = ยืดให้เต็มกรอบพอดี (ขอบล่างล้นออกนอกฉากเล็กน้อยเพื่อไม่ให้เห็นพื้นหลังใต้โต๊ะ)
  cone1:{file:'Ice_Cream Cone.PNG',...CONE,label:'โคนแบบที่ 1 (โคนเริ่มต้น)'},
  cone2:{file:'Ice_Cream Cone_choc.PNG',...CONE,label:'โคนแบบที่ 2 (โคนที่ซ้อนสลับ)'},
  blob1:{file:'Ice_vanila.PNG',...SCOOP,label:'ไอศกรีม '+FLAVORS[0]},
