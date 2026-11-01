@@ -2,24 +2,31 @@ window.CFG=(()=>{
 const FONT='Sarabun'; // ฟอนต์จาก Google Fonts (ต้องรองรับภาษาไทย) เช่น Noto Sans Thai, IBM Plex Sans Thai, Prompt, Noto Serif Thai, Trirong
 const GAME='ชื่อร้าน';
 const IMG='img/';
-const ROD={file:'stick.png',th:14,hx:290,hy:300};
-const REST=395;
-const FLAVORS=['รสที่ 1','รสที่ 2','รสที่ 3'];
-const VB={x:270,y:170,w:100,h:370};
+const ROD={file:'stick.PNG',th:14,hx:244,hy:292}; // ไม้: th=ความหนา, hx,hy=จุดที่คนขายถือไม้
+const REST=325; // ความสูงที่ไอศกรีมวางบนโคน: ลดค่า = ลอยสูงขึ้น, เพิ่มค่า = จมลงในโคนมากขึ้น
+const HOVER=155; // ความสูงที่ลูกไอศกรีมลอยรอเหนือโคน
+const FLAVORS=['วานิลลา','สตรอว์เบอร์รี','รัม เรซิ่น','ช็อกโกแลต']; // ชื่อ 4 รส ตรงกับ Ice_vanila=วานิลลา, Ice_staberry=สตรอว์เบอร์รี, Ice_Raisin=รัม เรซิ่น, Ice_choc=ช็อกโกแลต ตามลำดับ
+const VB={x:200,y:165,w:160,h:190,cut:0}; // กรอบคนขาย (ทั้ง 2 คนใช้กรอบเดียวกัน) cut:0 = ภาพมีขอบขาวในตัวแล้ว ไม่ต้องใส่ซ้ำ
+/* ฉาก 360 กว้าง x 520 สูง (สัดส่วนเดียวกับภาพ 604x873) | file = ชื่อไฟล์ในโฟลเดอร์ img (พิมพ์เล็กใหญ่ให้ตรง) | x,y,w,h = ตำแหน่งและขนาด | cut:0 = ไม่ใส่ขอบขาวดำเพิ่ม */
 const SLOTS={
- bg:{file:'bg.png',x:0,y:0,w:360,h:640,label:'พื้นหลัง',fit:'xMidYMid slice',fill:'#1a0a10'},
- vendor1:{file:'vendor1.png',...VB,label:'คนขายคนที่ 1'},vendor1Laugh:{file:'vendor1_laugh.png',...VB,noph:1},
- vendor2:{file:'vendor2.png',...VB,label:'คนขายคนที่ 2'},vendor2Laugh:{file:'vendor2_laugh.png',...VB,noph:1},
- table:{file:'table.png',x:0,y:540,w:360,h:100,label:'โต๊ะ'},
- cone:{file:'cone.png',x:135,y:420,w:90,h:130,label:'โคนเปล่า'},
- blob1:{file:'ice_stick_1.png',x:-40,y:-40,w:80,h:125,label:'ไอติมบนไม้ '+FLAVORS[0]},
- blob2:{file:'ice_stick_2.png',x:-40,y:-40,w:80,h:125,label:'ไอติมบนไม้ '+FLAVORS[1]},
- blob3:{file:'ice_stick_3.png',x:-40,y:-40,w:80,h:125,label:'ไอติมบนไม้ '+FLAVORS[2]},
- curtainL:{file:'curtain_left.png',x:-10,y:-10,w:130,h:210,label:'ม่านซ้ายประดับกุหลาบ',cut:0},
- curtainR:{file:'curtain_right.png',x:240,y:-10,w:130,h:210,label:'ม่านขวาประดับกุหลาบ',cut:0},
- coneStick:{file:'cone_stick.png',x:-30,y:-36,w:60,h:100,label:'โคนบนไม้'}
+ bg:{file:'bg.PNG',x:0,y:0,w:360,h:520,label:'พื้นหลัง',fit:'xMidYMid slice',fill:'#1a0a10'},
+ curtainL:{file:'curtain_left.PNG',x:0,y:0,w:125,h:358,label:'ม่านซ้าย',cut:0},
+ curtainR:{file:'curtain_right.PNG',x:235,y:0,w:125,h:358,label:'ม่านขวา',cut:0},
+ curtainT:{file:'curtain_Top.PNG',x:122,y:0,w:116,h:50,label:'ม่านบนกลาง',cut:0},
+ vendor1:{file:'vendor1.PNG',...VB,label:'คนขายคนที่ 1'},vendor1Laugh:{file:'vendor1_laugh.PNG',...VB,noph:1},
+ vendor2:{file:'vendor2.PNG',...VB,label:'คนขายคนที่ 2'},vendor2Laugh:{file:'vendor2_laugh.PNG',...VB,noph:1},
+ table:{file:'table.PNG',x:0,y:350,w:360,h:170,label:'โต๊ะ',cut:0},
+ cone1:{file:'Ice_Cream Cone.PNG',x:122,y:352,w:116,h:168,label:'โคนแบบที่ 1 (โคนเริ่มต้น)'},
+ cone2:{file:'Ice_Cream Cone_choc.PNG',x:122,y:352,w:116,h:168,label:'โคนแบบที่ 2 (โคนที่ซ้อนสลับ)'},
+ blob1:{file:'Ice_vanila.PNG',x:-40,y:-30,w:80,h:68,label:'ไอศกรีม '+FLAVORS[0]},
+ blob2:{file:'Ice_staberry.PNG',x:-40,y:-30,w:80,h:68,label:'ไอศกรีม '+FLAVORS[1]},
+ blob3:{file:'Ice_Raisin.PNG',x:-40,y:-30,w:80,h:68,label:'ไอศกรีม '+FLAVORS[2]},
+ blob4:{file:'Ice_choc.PNG',x:-40,y:-30,w:80,h:68,label:'ไอศกรีม '+FLAVORS[3]},
+ coneStick1:{file:'Ice_Cream Cone.PNG',x:-26,y:-30,w:52,h:72,label:'โคน 1 บนไม้'},
+ coneStick2:{file:'Ice_Cream Cone_choc.PNG',x:-26,y:-30,w:52,h:72,label:'โคน 2 บนไม้'}
 };
 const API='';
-const CUT={w:4,b:1.2,s:2.5}; // ภาพตัดปะ: ขอบขาวหนา w, ขอบดำบาง b, เงา s (หน่วยเดียวกับฉาก 360 กว้าง) ปรับให้หนาขึ้น/บางลงได้
-return {GAME,IMG,ROD,REST,FLAVORS,SLOTS,API,FONT,CUT};
+const WORDS={none:'ไว้ลองใหม่นะ !',one:'ก็ยังดีนะ !',many:'โชคดีสุด ๆ เลย !'}; // ข้อความบรรทัดที่ 2 บนการ์ดสรุป: ไม่ได้อะไร / ได้ 1 อย่าง / ได้ 2 อย่างขึ้นไป
+const CUT={w:4,b:1.2,s:2.5}; // ภาพตัดปะ: ขอบขาวหนา w, ขอบดำบาง b, เงา s (หน่วยเดียวกับฉาก 360 กว้าง)
+return {GAME,IMG,ROD,REST,HOVER,FLAVORS,SLOTS,API,FONT,CUT,WORDS};
 })();
