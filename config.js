@@ -20,7 +20,7 @@ const SLOTS={
  bg:{file:'bg.PNG',x:0,y:0,w:360,h:520,label:'พื้นหลัง',fit:'xMidYMid slice',fill:'#1a0a10'},
  curtainL:{file:'curtain_left.PNG',x:-4,y:-4,w:130,h:366,label:'ม่านซ้าย',cut:0,trim:1,stretch:1},
  curtainR:{file:'curtain_right.PNG',x:231,y:-4,w:133,h:352,label:'ม่านขวา',cut:0,trim:1,stretch:1},
- curtainT:{file:'curtain_Top.PNG',x:122,y:-3,w:111,h:52,label:'ม่านบนกลาง',cut:0,trim:1,stretch:1},
+ curtainT:{file:'curtain_Top.PNG',x:119,y:6,w:117,h:48,label:'ม่านบนกลาง',cut:0,trim:1,stretch:1},
  vendor1:{file:'vendor1.PNG',...VB,label:'คนขายคนที่ 1'},vendor1Laugh:{file:'vendor1_laugh.PNG',...VB,noph:1},
  vendor2:{file:'vendor2.PNG',...VB,label:'คนขายคนที่ 2'},vendor2Laugh:{file:'vendor2_laugh.PNG',...VB,noph:1},
  table:{file:'table.PNG',x:0,y:350,w:360,h:186,label:'โต๊ะ',cut:0,trim:1,stretch:1}, // stretch:1 = ยืดให้เต็มกรอบพอดี (ขอบล่างล้นออกนอกฉากเล็กน้อยเพื่อไม่ให้เห็นพื้นหลังใต้โต๊ะ)
