@@ -3,8 +3,16 @@ const FONT='Sarabun'; // ฟอนต์จาก Google Fonts (ต้องร�
 const GAME='ชื่อร้าน';
 const IMG='img/';
 const ROD={file:'stick.PNG',th:14,hx:244,hy:292}; // ไม้: th=ความหนา, hx,hy=จุดที่คนขายถือไม้
-const REST=325; // ความสูงที่ไอศกรีมวางบนโคน: ลดค่า = ลอยสูงขึ้น, เพิ่มค่า = จมลงในโคนมากขึ้น
-const HOVER=155; // ความสูงที่ลูกไอศกรีมลอยรอเหนือโคน
+const REST=373; // ความสูงที่ไอศกรีมวางบนโคน: ลดค่า = ลอยสูงขึ้น, เพิ่มค่า = จมลงในโคนมากขึ้น
+const HOVER=155;
+const BGDARK=0.45; // ความเข้มของฟิลเตอร์มืดทับพื้นหลัง: 0 = เดิม, 0.45 = เข้มขึ้นพอดี, 0.7 = มืดมาก
+const CONE_STEP=13; // ระยะที่โคนซ้อนแต่ละอันโผล่ขึ้นมา
+const SCOOP_STEP=56; // ระยะห่างแนวตั้งของไอศกรีมแต่ละลูกที่ซ้อนกัน
+/* ขนาดของ "ส่วนที่มองเห็นจริง" ของภาพ (trim:1 = ตัดขอบโปร่งใสของไฟล์ให้อัตโนมัติ) ปรับ w,h ที่นี่เพื่อให้โคนกับไอศกรีมสมดุลกัน
+   CONE = โคน (x,y = มุมซ้ายบนในฉาก 360x520), SCOOP = ลูกไอศกรีม (x,y เทียบกับจุดปลายไม้ ให้ศูนย์กลางอยู่ที่ 0,0) */
+const CONE={x:142,y:398,w:76,h:103,trim:1};
+const SCOOP={x:-44,y:-37,w:88,h:75,trim:1};
+const CONE_HELD={x:-38,y:-51,w:76,h:103,trim:1}; // ความสูงที่ลูกไอศกรีมลอยรอเหนือโคน
 const FLAVORS=['วานิลลา','สตรอว์เบอร์รี','รัม เรซิ่น','ช็อกโกแลต']; // ชื่อ 4 รส ตรงกับ Ice_vanila=วานิลลา, Ice_staberry=สตรอว์เบอร์รี, Ice_Raisin=รัม เรซิ่น, Ice_choc=ช็อกโกแลต ตามลำดับ
 const VB={x:200,y:165,w:160,h:190,cut:0}; // กรอบคนขาย (ทั้ง 2 คนใช้กรอบเดียวกัน) cut:0 = ภาพมีขอบขาวในตัวแล้ว ไม่ต้องใส่ซ้ำ
 /* ฉาก 360 กว้าง x 520 สูง (สัดส่วนเดียวกับภาพ 604x873) | file = ชื่อไฟล์ในโฟลเดอร์ img (พิมพ์เล็กใหญ่ให้ตรง) | x,y,w,h = ตำแหน่งและขนาด | cut:0 = ไม่ใส่ขอบขาวดำเพิ่ม */
@@ -16,17 +24,17 @@ const SLOTS={
  vendor1:{file:'vendor1.PNG',...VB,label:'คนขายคนที่ 1'},vendor1Laugh:{file:'vendor1_laugh.PNG',...VB,noph:1},
  vendor2:{file:'vendor2.PNG',...VB,label:'คนขายคนที่ 2'},vendor2Laugh:{file:'vendor2_laugh.PNG',...VB,noph:1},
  table:{file:'table.PNG',x:0,y:350,w:360,h:170,label:'โต๊ะ',cut:0},
- cone1:{file:'Ice_Cream Cone.PNG',x:122,y:352,w:116,h:168,label:'โคนแบบที่ 1 (โคนเริ่มต้น)'},
- cone2:{file:'Ice_Cream Cone_choc.PNG',x:122,y:352,w:116,h:168,label:'โคนแบบที่ 2 (โคนที่ซ้อนสลับ)'},
- blob1:{file:'Ice_vanila.PNG',x:-40,y:-30,w:80,h:68,label:'ไอศกรีม '+FLAVORS[0]},
- blob2:{file:'Ice_staberry.PNG',x:-40,y:-30,w:80,h:68,label:'ไอศกรีม '+FLAVORS[1]},
- blob3:{file:'Ice_Raisin.PNG',x:-40,y:-30,w:80,h:68,label:'ไอศกรีม '+FLAVORS[2]},
- blob4:{file:'Ice_choc.PNG',x:-40,y:-30,w:80,h:68,label:'ไอศกรีม '+FLAVORS[3]},
- coneStick1:{file:'Ice_Cream Cone.PNG',x:-26,y:-30,w:52,h:72,label:'โคน 1 บนไม้'},
- coneStick2:{file:'Ice_Cream Cone_choc.PNG',x:-26,y:-30,w:52,h:72,label:'โคน 2 บนไม้'}
+ cone1:{file:'Ice_Cream Cone.PNG',...CONE,label:'โคนแบบที่ 1 (โคนเริ่มต้น)'},
+ cone2:{file:'Ice_Cream Cone_choc.PNG',...CONE,label:'โคนแบบที่ 2 (โคนที่ซ้อนสลับ)'},
+ blob1:{file:'Ice_vanila.PNG',...SCOOP,label:'ไอศกรีม '+FLAVORS[0]},
+ blob2:{file:'Ice_staberry.PNG',...SCOOP,label:'ไอศกรีม '+FLAVORS[1]},
+ blob3:{file:'Ice_Raisin.PNG',...SCOOP,label:'ไอศกรีม '+FLAVORS[2]},
+ blob4:{file:'Ice_choc.PNG',...SCOOP,label:'ไอศกรีม '+FLAVORS[3]},
+ coneStick1:{file:'Ice_Cream Cone.PNG',...CONE_HELD,label:'โคน 1 บนไม้'},
+ coneStick2:{file:'Ice_Cream Cone_choc.PNG',...CONE_HELD,label:'โคน 2 บนไม้'}
 };
 const API='';
 const WORDS={none:'ไว้ลองใหม่นะ !',one:'ก็ยังดีนะ !',many:'โชคดีสุด ๆ เลย !'}; // ข้อความบรรทัดที่ 2 บนการ์ดสรุป: ไม่ได้อะไร / ได้ 1 อย่าง / ได้ 2 อย่างขึ้นไป
 const CUT={w:4,b:1.2,s:2.5}; // ภาพตัดปะ: ขอบขาวหนา w, ขอบดำบาง b, เงา s (หน่วยเดียวกับฉาก 360 กว้าง)
-return {GAME,IMG,ROD,REST,HOVER,FLAVORS,SLOTS,API,FONT,CUT,WORDS};
+return {GAME,IMG,ROD,REST,HOVER,BGDARK,CONE_STEP,SCOOP_STEP,FLAVORS,SLOTS,API,FONT,CUT,WORDS};
 })();
