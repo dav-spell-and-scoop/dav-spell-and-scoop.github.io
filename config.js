@@ -1,11 +1,11 @@
 window.CFG=(()=>{
-const FONT='Sarabun'; // ฟอนต์จาก Google Fonts (ต้องรองรับภาษาไทย) เช่น Noto Sans Thai, IBM Plex Sans Thai, Prompt, Noto Serif Thai, Trirong
-const GAME='ชื่อร้าน';
+const FONT='Sarabun'; 
+const GAME='SPELL & SCOOP';
 const IMG='img/';
-const ROD={file:'stick.PNG',th:14,hx:244,hy:292}; // ไม้: th=ความหนา, hx,hy=จุดที่คนขายถือไม้
-const REST=326; // ความสูงที่ไอศกรีมวางบนโคน: ลดค่า = ลอยสูงขึ้น, เพิ่มค่า = จมลงในโคนมากขึ้น
-const HOVER=155; // ความสูงที่ลูกไอศกรีมลอยรอเหนือโคน
-const BGDARK=0.45; // ความเข้มของฟิลเตอร์มืดทับพื้นหลัง: 0 = เดิม, 0.45 = เข้มขึ้นพอดี, 0.7 = มืดมาก
+const ROD={file:'stick.PNG',th:14,hx:244,hy:292}; 
+const REST=326; 
+const HOVER=155;
+const BGDARK=0.45;
 const CONE_STEP=16; // ระยะที่โคนซ้อนแต่ละอันโผล่ขึ้นมา
 const SCOOP_STEP=48; // ระยะห่างแนวตั้งของไอศกรีมแต่ละลูกที่ซ้อนกัน
 /* ขนาดของ "ส่วนที่มองเห็นจริง" ของภาพ (trim:1 = ตัดขอบโปร่งใสของไฟล์ให้อัตโนมัติ) ปรับ w,h ที่นี่เพื่อให้โคนกับไอศกรีมสมดุลกัน
