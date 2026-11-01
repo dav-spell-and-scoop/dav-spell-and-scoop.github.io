@@ -15,8 +15,11 @@ const SLOTS={
  blob1:{file:'ice_stick_1.png',x:-40,y:-40,w:80,h:125,label:'ไอติมบนไม้ '+FLAVORS[0]},
  blob2:{file:'ice_stick_2.png',x:-40,y:-40,w:80,h:125,label:'ไอติมบนไม้ '+FLAVORS[1]},
  blob3:{file:'ice_stick_3.png',x:-40,y:-40,w:80,h:125,label:'ไอติมบนไม้ '+FLAVORS[2]},
+ curtainL:{file:'curtain_left.png',x:-10,y:-10,w:130,h:210,label:'ม่านซ้ายประดับกุหลาบ',cut:0},
+ curtainR:{file:'curtain_right.png',x:240,y:-10,w:130,h:210,label:'ม่านขวาประดับกุหลาบ',cut:0},
  coneStick:{file:'cone_stick.png',x:-30,y:-36,w:60,h:100,label:'โคนบนไม้'}
 };
 const API='';
-return {GAME,IMG,ROD,REST,FLAVORS,SLOTS,API,FONT};
+const CUT={w:4,b:1.2,s:2.5}; // ภาพตัดปะ: ขอบขาวหนา w, ขอบดำบาง b, เงา s (หน่วยเดียวกับฉาก 360 กว้าง) ปรับให้หนาขึ้น/บางลงได้
+return {GAME,IMG,ROD,REST,FLAVORS,SLOTS,API,FONT,CUT};
 })();
