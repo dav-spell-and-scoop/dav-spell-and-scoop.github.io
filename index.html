@@ -7,12 +7,12 @@
       content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no"
     />
     <meta name="theme-color" content="#12070b" />
-    <title>ชื่อร้าน</title>
-    <meta name="description" content="กดตอนไม้อยู่เหนือโคน แล้วลุ้นว่าจะได้ไอติมหรือโดนแกล้ง" />
-    <meta property="og:title" content="ชื่อร้าน" />
+    <title>SPELL &amp; SCOOP</title>
+    <meta name="description" content="มาซื้อไอศกรีมในราคาเพียง 1 วีร์กันเถอะ !" />
+    <meta property="og:title" content="SPELL &amp; SCOOP" />
     <meta
       property="og:description"
-      content="กดตอนไม้อยู่เหนือโคน แล้วลุ้นว่าจะได้ไอติมหรือโดนแกล้ง"
+      content="มาซื้อไอศกรีมในราคาเพียง 1 วีร์กันเถอะ !"
     />
     <meta property="og:type" content="website" />
     <meta property="og:image" content="img/og.png" />
@@ -182,7 +182,10 @@
         transform: translate(-50%, -50%);
         color: var(--dark);
         font-weight: 700;
-        white-space: nowrap;
+        width: max-content;
+        max-width: 88%;
+        text-align: center;
+        white-space: normal;
         padding: 7px 18px;
         border: 3px solid transparent;
         border-radius: 20px;
@@ -622,7 +625,7 @@
               this.nextElementSibling.hidden = true;
             "
           />
-          <h1 class="gn">ชื่อร้าน</h1>
+          <h1 class="gn">SPELL &amp; SCOOP</h1>
           <p id="s"></p>
           <input id="nm" maxlength="20" placeholder="ชื่อลูกค้า" autocomplete="off" /><button
             id="b"
@@ -648,7 +651,7 @@
         </div>
         <div class="rb">
           <button id="b2">จ่าย 1 วีร์ อีกรอบ</button><button id="b3" class="alt">รับไอศกรีม</button
-          ><button id="b4" class="alt" hidden>บันทึกเป็นรูป PNG</button>
+          ><button id="b4" class="alt" hidden>บันทึกผลลัพธ์</button>
         </div>
       </div>
     </div>
@@ -665,7 +668,7 @@
         }
       }, 3000);
     </script>
-    <script src="config.js?v=4"></script>
-    <script src="game.js?v=4"></script>
+    <script src="config.js?v=8"></script>
+    <script src="game.js?v=8"></script>
   </body>
 </html>
