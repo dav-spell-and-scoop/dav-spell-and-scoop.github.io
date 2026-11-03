@@ -472,6 +472,38 @@
         gap: 12px;
         align-items: center;
       }
+      #b3 {
+        position: relative;
+        font-size: 24px;
+        padding: 13px 40px;
+      }
+      #b3::after,
+      #b3::before {
+        content: "\2726";
+        position: absolute;
+        color: #ffe27a;
+        text-shadow: 0 0 4px #fff, 1px 1px 0 #a5671b, -1px -1px 0 #a5671b;
+        line-height: 1;
+        pointer-events: none;
+        animation: tw 1.6s ease-in-out infinite;
+      }
+      #b3::after {
+        top: -12px;
+        right: 4px;
+        font-size: 26px;
+      }
+      #b3::before {
+        top: -5px;
+        right: 30px;
+        font-size: 13px;
+        animation-delay: 0.6s;
+      }
+      @keyframes tw {
+        50% {
+          transform: scale(0.7) rotate(20deg);
+          opacity: 0.7;
+        }
+      }
       button.alt {
         background: #fff;
         color: var(--dark);
@@ -669,8 +701,9 @@
           <div id="rv"></div>
         </div>
         <div class="rb">
-          <button id="b2">จ่าย 1 วีร์ อีกรอบ</button><button id="b3" class="alt">รับไอศกรีม</button
-          ><button id="b4" class="alt" hidden>บันทึกผลลัพธ์</button>
+          <button id="b3">รับไอศกรีม</button
+          ><button id="b4" hidden>บันทึกผลลัพธ์</button
+          ><button id="b2" class="alt">จ่าย 1 วีร์ อีกรอบ</button>
         </div>
       </div>
     </div>
@@ -687,7 +720,7 @@
         }
       }, 3000);
     </script>
-    <script src="config.js?v=10"></script>
-    <script src="game.js?v=10"></script>
+    <script src="config.js?v=11"></script>
+    <script src="game.js?v=11"></script>
   </body>
 </html>
