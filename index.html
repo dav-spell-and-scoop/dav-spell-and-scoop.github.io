@@ -107,6 +107,25 @@
           inset 0 0 0 calc(var(--sw) * 0.006) #141010,
           0 0 0 calc(var(--sw) * 0.006) #141010;
       }
+      #stage {
+        background: radial-gradient(ellipse at 50% 35%, #5a2236 0%, #2e0f1b 60%, #1a0a10 100%);
+      }
+      svg#sv {
+        opacity: 0;
+        transition: opacity 0.35s ease;
+      }
+      svg#sv.rdy {
+        opacity: 1;
+      }
+      #seal,
+      #bar {
+        opacity: 0;
+        transition: opacity 0.35s ease;
+      }
+      #stage.rdy #seal,
+      #stage.rdy #bar {
+        opacity: 1;
+      }
       svg#sv {
         position: absolute;
         inset: 0;
@@ -668,7 +687,7 @@
         }
       }, 3000);
     </script>
-    <script src="config.js?v=9"></script>
-    <script src="game.js?v=9"></script>
+    <script src="config.js?v=10"></script>
+    <script src="game.js?v=10"></script>
   </body>
 </html>
