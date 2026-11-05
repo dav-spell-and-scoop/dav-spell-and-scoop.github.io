@@ -513,6 +513,7 @@
         pointer-events: none;
       }
       .co {
+        overflow: visible;
         position: absolute;
         pointer-events: none;
         animation: cotw 2.4s ease-in-out infinite;
@@ -691,54 +692,65 @@
         height: calc(var(--w) * 0.54);
         transform: translate(-50%, -50%);
         pointer-events: none;
-        overflow: hidden;
       }
       .mg.t2 { width: calc(var(--w) * 0.57); height: calc(var(--w) * 0.57); }
       .mg.t3, .mg.t4 { width: calc(var(--w) * 0.6); height: calc(var(--w) * 0.6); }
-      .mg.t3, .mg.t4 { filter: drop-shadow(0 0 2.5px rgba(230, 180, 70, 0.55)); }
-      .mg .dr {
-        stroke-dasharray: 1;
-        stroke-dashoffset: 0;
-        animation: mgd 1.5s ease-out both;
-        animation-delay: calc(0.25s + var(--i, 0) * 0.22s);
+      .mg .mc {
+        position: absolute;
+        inset: 0;
+        background: rgba(110, 35, 38, 0.55);
+        -webkit-mask-size: contain;
+        mask-size: contain;
+        -webkit-mask-repeat: no-repeat;
+        mask-repeat: no-repeat;
+        -webkit-mask-position: center;
+        mask-position: center;
+        animation: mgf 1.4s ease both, mgr 120s linear infinite;
       }
-      .mg .fd {
-        animation: mgf 1.2s ease both;
-        animation-delay: calc(0.5s + var(--i, 0) * 0.22s);
-      }
-      .mg .rot {
-        animation: mgr 70s linear infinite, mgf 1.2s ease both;
-        transform-box: view-box;
-        transform-origin: 50% 50%;
-      }
-      .mg .rot.rev {
-        animation: mgr 50s linear infinite reverse;
+      .mg .gs {
+        position: absolute;
+        height: auto;
+        transform: translate(-50%, -50%);
+        filter: drop-shadow(0 0 3px rgba(230, 180, 70, 0.6));
+        animation: mgt 2.6s ease-in-out infinite;
       }
       .mg .pt {
+        position: absolute;
+        width: 3px;
+        height: 3px;
+        border-radius: 50%;
+        background: #d9a93a;
         opacity: 0;
         animation: mgp 3.6s ease-in infinite;
       }
-      .mg .bst {
+      .mg .fl {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 150%;
+        height: auto;
         opacity: 0;
-        transform-box: view-box;
-        transform-origin: 50% 50%;
-        animation: mgb 1.2s ease-out both;
+        transform: translate(-50%, -50%);
+        animation: mgb 1.5s ease-out both;
+        animation-delay: var(--d);
       }
-      @keyframes mgd { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
       @keyframes mgf { from { opacity: 0; } }
       @keyframes mgr { to { transform: rotate(360deg); } }
+      @keyframes mgt {
+        50% { opacity: 0.55; transform: translate(-50%, -50%) scale(0.8) rotate(12deg); }
+      }
       @keyframes mgp {
         0% { opacity: 0; transform: translateY(0); }
         20% { opacity: 0.9; }
         100% { opacity: 0; transform: translateY(-70px); }
       }
       @keyframes mgb {
-        0% { opacity: 0; transform: scale(0.55); }
-        25% { opacity: 1; }
-        100% { opacity: 0; transform: scale(1.22); }
+        0% { opacity: 0; transform: translate(-50%, -50%) scale(0.2) rotate(-25deg); }
+        30% { opacity: 1; }
+        100% { opacity: 0; transform: translate(-50%, -50%) scale(1) rotate(0deg); }
       }
       @media (prefers-reduced-motion: reduce) {
-        .mg .dr, .mg .fd, .mg .rot, .mg .pt, .mg .bst { animation: none; }
+        .mg .mc, .mg .gs, .mg .pt, .mg .fl { animation: none; }
       }
       .wm path {
         fill: none;
