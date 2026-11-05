@@ -485,7 +485,7 @@
         text-shadow: 0 0 4px #fff, 1px 1px 0 #a5671b, -1px -1px 0 #a5671b;
         line-height: 1;
         pointer-events: none;
-        animation: tw 1.6s ease-in-out infinite;
+        animation: btw 1.6s ease-in-out infinite;
       }
       #b3::after {
         top: -12px;
@@ -498,10 +498,208 @@
         font-size: 13px;
         animation-delay: 0.6s;
       }
-      @keyframes tw {
+      @keyframes btw {
         50% {
           transform: scale(0.7) rotate(20deg);
           opacity: 0.7;
+        }
+      }
+      #rf::before {
+        content: "";
+        position: absolute;
+        inset: 6px;
+        border: 1.4px dotted #e6c36a;
+        border-radius: 4px;
+        pointer-events: none;
+      }
+      .co {
+        position: absolute;
+        pointer-events: none;
+        animation: cotw 2.4s ease-in-out infinite;
+      }
+      .co.tl,
+      .co.br {
+        width: 40px;
+        height: 40px;
+      }
+      .co.tr,
+      .co.bl {
+        width: 30px;
+        height: 30px;
+        animation-delay: 1s;
+      }
+      .co.tl {
+        left: -20px;
+        top: -20px;
+      }
+      .co.tr {
+        right: -15px;
+        top: -15px;
+      }
+      .co.bl {
+        left: -15px;
+        bottom: -15px;
+      }
+      .co.br {
+        right: -20px;
+        bottom: -20px;
+      }
+      @keyframes cotw {
+        50% {
+          transform: scale(0.82) rotate(12deg);
+          opacity: 0.8;
+        }
+      }
+      .stk .drop {
+        animation: drp 0.75s both;
+      }
+      @keyframes drp {
+        0% {
+          transform: translateY(-190px);
+          opacity: 0;
+          animation-timing-function: cubic-bezier(0.55, 0, 0.9, 0.6);
+        }
+        10% {
+          opacity: 1;
+        }
+        62% {
+          transform: translateY(0);
+          animation-timing-function: ease-out;
+        }
+        78% {
+          transform: translateY(-10px);
+          animation-timing-function: ease-in;
+        }
+        100% {
+          transform: translateY(0);
+        }
+      }
+      .ds {
+        opacity: 0;
+        transform-box: fill-box;
+        transform-origin: 50% 50%;
+        animation: dsf linear infinite;
+      }
+      @keyframes dsf {
+        0% {
+          opacity: 0;
+          transform: translate(0, 0) rotate(0);
+        }
+        15% {
+          opacity: 0.85;
+        }
+        70% {
+          opacity: 0.6;
+        }
+        100% {
+          opacity: 0;
+          transform: translate(var(--dx), var(--dy)) rotate(60deg);
+        }
+      }
+      .swL,
+      .swR {
+        transform-box: fill-box;
+        animation: sw 6.5s ease-in-out infinite alternate;
+      }
+      .swL {
+        transform-origin: 0 0;
+        --k: -0.6deg;
+      }
+      .swR {
+        transform-origin: 100% 0;
+        --k: 0.6deg;
+        animation-delay: -2.2s;
+      }
+      @keyframes sw {
+        from {
+          transform: scaleX(1) skewX(0deg);
+        }
+        to {
+          transform: scaleX(1.022) skewX(var(--k));
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .ds,
+        .swL,
+        .swR,
+        .co,
+        .stk .drop {
+          animation: none;
+        }
+      }
+      .cast path {
+        fill: none;
+        stroke: var(--ink, #ffe9a8);
+        stroke-width: 1.1;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-dasharray: 1;
+        stroke-dashoffset: 1;
+        opacity: 0;
+        transform-box: fill-box;
+        transform-origin: 50% 50%;
+      }
+      .cast.on path {
+        animation: cast 2.3s ease-out forwards;
+      }
+      @keyframes cast {
+        0% {
+          opacity: 0;
+          stroke-dashoffset: 1;
+          transform: rotate(-25deg) scale(0.9);
+        }
+        8% {
+          opacity: 1;
+        }
+        45% {
+          stroke-dashoffset: 0;
+          transform: rotate(0) scale(1);
+        }
+        62% {
+          opacity: 1;
+        }
+        100% {
+          opacity: 0;
+          stroke-dashoffset: 0;
+          transform: rotate(30deg) scale(1.1);
+        }
+      }
+      #rf .sheet {
+        position: relative;
+      }
+      #rf .sheet > #rg,
+      #rf .sheet > #rt {
+        position: relative;
+        z-index: 1;
+      }
+      .wm {
+        position: absolute;
+        z-index: 0;
+        left: calc(12px + (100% - 24px) * 0.33);
+        top: 40%;
+        width: calc(var(--w) * 0.56);
+        height: calc(var(--w) * 0.56);
+        transform: translate(-50%, -50%);
+        pointer-events: none;
+      }
+      .wm path {
+        fill: none;
+        stroke: rgba(110, 35, 38, 0.3);
+        stroke-width: 0.9;
+        stroke-linecap: round;
+      }
+      .wmr {
+        animation: wmr 90s linear infinite;
+      }
+      @keyframes wmr {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .cast.on path,
+        .wmr {
+          animation: none;
         }
       }
       button.alt {
@@ -699,6 +897,10 @@
             <div id="rt"><div class="l1"></div><div class="l2"></div></div>
           </div>
           <div id="rv"></div>
+          <svg class="co tl" viewBox="-12 -12 24 24" aria-hidden="true"><g fill="none" stroke="#141010" stroke-width="3.2"><path d="M0 -7Q1.2 -1.2 7 0Q1.2 1.2 0 7Q-1.2 1.2 -7 0Q-1.2 -1.2 0 -7Z" stroke-linejoin="round"/></g><g fill="none" stroke="#fffdf7" stroke-width="2.1"><path d="M0 -7Q1.2 -1.2 7 0Q1.2 1.2 0 7Q-1.2 1.2 -7 0Q-1.2 -1.2 0 -7Z" stroke-linejoin="round"/></g><g fill="#f3d98a"><path d="M0 -7Q1.2 -1.2 7 0Q1.2 1.2 0 7Q-1.2 1.2 -7 0Q-1.2 -1.2 0 -7Z" stroke-linejoin="round"/></g></svg>
+          <svg class="co tr" viewBox="-12 -12 24 24" aria-hidden="true"><g fill="none" stroke="#141010" stroke-width="3.2"><path d="M0 -7Q1.2 -1.2 7 0Q1.2 1.2 0 7Q-1.2 1.2 -7 0Q-1.2 -1.2 0 -7Z" stroke-linejoin="round"/></g><g fill="none" stroke="#fffdf7" stroke-width="2.1"><path d="M0 -7Q1.2 -1.2 7 0Q1.2 1.2 0 7Q-1.2 1.2 -7 0Q-1.2 -1.2 0 -7Z" stroke-linejoin="round"/></g><g fill="#f3d98a"><path d="M0 -7Q1.2 -1.2 7 0Q1.2 1.2 0 7Q-1.2 1.2 -7 0Q-1.2 -1.2 0 -7Z" stroke-linejoin="round"/></g></svg>
+          <svg class="co bl" viewBox="-12 -12 24 24" aria-hidden="true"><g fill="none" stroke="#141010" stroke-width="3.2"><path d="M0 -7Q1.2 -1.2 7 0Q1.2 1.2 0 7Q-1.2 1.2 -7 0Q-1.2 -1.2 0 -7Z" stroke-linejoin="round"/></g><g fill="none" stroke="#fffdf7" stroke-width="2.1"><path d="M0 -7Q1.2 -1.2 7 0Q1.2 1.2 0 7Q-1.2 1.2 -7 0Q-1.2 -1.2 0 -7Z" stroke-linejoin="round"/></g><g fill="#f3d98a"><path d="M0 -7Q1.2 -1.2 7 0Q1.2 1.2 0 7Q-1.2 1.2 -7 0Q-1.2 -1.2 0 -7Z" stroke-linejoin="round"/></g></svg>
+          <svg class="co br" viewBox="-12 -12 24 24" aria-hidden="true"><g fill="none" stroke="#141010" stroke-width="3.2"><path d="M0 -7Q1.2 -1.2 7 0Q1.2 1.2 0 7Q-1.2 1.2 -7 0Q-1.2 -1.2 0 -7Z" stroke-linejoin="round"/></g><g fill="none" stroke="#fffdf7" stroke-width="2.1"><path d="M0 -7Q1.2 -1.2 7 0Q1.2 1.2 0 7Q-1.2 1.2 -7 0Q-1.2 -1.2 0 -7Z" stroke-linejoin="round"/></g><g fill="#f3d98a"><path d="M0 -7Q1.2 -1.2 7 0Q1.2 1.2 0 7Q-1.2 1.2 -7 0Q-1.2 -1.2 0 -7Z" stroke-linejoin="round"/></g></svg>
         </div>
         <div class="rb">
           <button id="b3">รับไอศกรีม</button
@@ -720,7 +922,7 @@
         }
       }, 3000);
     </script>
-    <script src="config.js?v=11"></script>
-    <script src="game.js?v=11"></script>
+    <script src="config.js?v=13"></script>
+    <script src="game.js?v=13"></script>
   </body>
 </html>
