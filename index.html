@@ -479,24 +479,96 @@
       }
       #b3::after,
       #b3::before {
-        content: "\2726";
+        content: "";
         position: absolute;
-        color: #ffe27a;
-        text-shadow: 0 0 4px #fff, 1px 1px 0 #a5671b, -1px -1px 0 #a5671b;
-        line-height: 1;
+        background: url(img/star_gold.png) center / contain no-repeat;
         pointer-events: none;
         animation: btw 1.6s ease-in-out infinite;
       }
       #b3::after {
-        top: -12px;
-        right: 4px;
-        font-size: 26px;
+        top: -18px;
+        right: -6px;
+        width: 38px;
+        height: 38px;
       }
       #b3::before {
-        top: -5px;
+        top: -8px;
         right: 30px;
-        font-size: 13px;
+        width: 20px;
+        height: 20px;
         animation-delay: 0.6s;
+      }
+      #seal::after,
+      .gn::before,
+      .gn::after,
+      #pick h1::before,
+      #pick h1::after {
+        content: "";
+        background: url(img/star_gold.png) center / contain no-repeat;
+        animation: btw 2.4s ease-in-out infinite;
+      }
+      #seal::after {
+        position: absolute;
+        top: -26%;
+        right: -34%;
+        width: 62%;
+        aspect-ratio: 1;
+      }
+      .sheet .gn {
+        display: table;
+        position: relative;
+        margin: 0 auto 12px;
+      }
+      .gn::before,
+      .gn::after {
+        position: absolute;
+        width: 1.05em;
+        height: 1.05em;
+      }
+      .gn::before {
+        left: -0.7em;
+        top: -0.45em;
+      }
+      .gn::after {
+        right: -0.65em;
+        bottom: -0.3em;
+      }
+      #pick h1::before,
+      #pick h1::after {
+        display: inline-block;
+        width: 0.8em;
+        height: 0.8em;
+        vertical-align: -0.1em;
+        margin: 0 0.3em;
+      }
+      .gn::after,
+      #pick h1::after {
+        animation-delay: 1.1s;
+      }
+      .gt {
+        transform-box: fill-box;
+        transform-origin: center;
+        animation: gtw 3.2s ease-in-out infinite;
+        animation-delay: var(--dl, 0s);
+        filter: drop-shadow(0 0 2px rgba(255, 210, 90, 0.7));
+      }
+      .gb {
+        transform-box: fill-box;
+        transform-origin: center;
+        pointer-events: none;
+        animation: gbk 1s ease-out both;
+      }
+      @keyframes gtw {
+        50% { opacity: 0.35; transform: scale(0.72) rotate(14deg); }
+      }
+      @keyframes gbk {
+        0% { opacity: 0; transform: translate(0, 0) scale(0.2) rotate(0deg); }
+        20% { opacity: 1; }
+        100% { opacity: 0; transform: translate(var(--dx), var(--dy)) scale(1) rotate(70deg); }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        #b3::after, #b3::before, #seal::after, .gn::before, .gn::after,
+        #pick h1::before, #pick h1::after, .gt, .gb { animation: none; }
       }
       @keyframes btw {
         50% {
@@ -992,7 +1064,7 @@
         }
       }, 3000);
     </script>
-    <script src="config.js?v=13"></script>
-    <script src="game.js?v=13"></script>
+    <script src="config.js?v=14"></script>
+    <script src="game.js?v=14"></script>
   </body>
 </html>
