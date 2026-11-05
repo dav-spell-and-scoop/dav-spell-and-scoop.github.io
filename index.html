@@ -682,6 +682,64 @@
         transform: translate(-50%, -50%);
         pointer-events: none;
       }
+      .mg {
+        position: absolute;
+        z-index: 0;
+        left: calc(12px + (100% - 24px) * 0.33);
+        top: 40%;
+        width: calc(var(--w) * 0.54);
+        height: calc(var(--w) * 0.54);
+        transform: translate(-50%, -50%);
+        pointer-events: none;
+        overflow: hidden;
+      }
+      .mg.t2 { width: calc(var(--w) * 0.57); height: calc(var(--w) * 0.57); }
+      .mg.t3, .mg.t4 { width: calc(var(--w) * 0.6); height: calc(var(--w) * 0.6); }
+      .mg.t3, .mg.t4 { filter: drop-shadow(0 0 2.5px rgba(230, 180, 70, 0.55)); }
+      .mg .dr {
+        stroke-dasharray: 1;
+        stroke-dashoffset: 0;
+        animation: mgd 1.5s ease-out both;
+        animation-delay: calc(0.25s + var(--i, 0) * 0.22s);
+      }
+      .mg .fd {
+        animation: mgf 1.2s ease both;
+        animation-delay: calc(0.5s + var(--i, 0) * 0.22s);
+      }
+      .mg .rot {
+        animation: mgr 70s linear infinite, mgf 1.2s ease both;
+        transform-box: view-box;
+        transform-origin: 50% 50%;
+      }
+      .mg .rot.rev {
+        animation: mgr 50s linear infinite reverse;
+      }
+      .mg .pt {
+        opacity: 0;
+        animation: mgp 3.6s ease-in infinite;
+      }
+      .mg .bst {
+        opacity: 0;
+        transform-box: view-box;
+        transform-origin: 50% 50%;
+        animation: mgb 1.2s ease-out both;
+      }
+      @keyframes mgd { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+      @keyframes mgf { from { opacity: 0; } }
+      @keyframes mgr { to { transform: rotate(360deg); } }
+      @keyframes mgp {
+        0% { opacity: 0; transform: translateY(0); }
+        20% { opacity: 0.9; }
+        100% { opacity: 0; transform: translateY(-70px); }
+      }
+      @keyframes mgb {
+        0% { opacity: 0; transform: scale(0.55); }
+        25% { opacity: 1; }
+        100% { opacity: 0; transform: scale(1.22); }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .mg .dr, .mg .fd, .mg .rot, .mg .pt, .mg .bst { animation: none; }
+      }
       .wm path {
         fill: none;
         stroke: rgba(110, 35, 38, 0.3);
