@@ -1103,7 +1103,7 @@
           if (img.complete && img.naturalWidth) trim(img);
           else img.addEventListener("load", function () { trim(img); });
         }
-        document.querySelectorAll("img.logo, #rlg").forEach(go);
+        document.querySelectorAll("#rlg").forEach(go);
       })();
       window.onerror = function (m, u, l) {
         var s = document.getElementById("s");
