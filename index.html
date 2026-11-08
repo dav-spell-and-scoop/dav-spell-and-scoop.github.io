@@ -288,7 +288,7 @@
         max-width: 66%;
         max-height: 92px;
         object-fit: contain;
-        margin: 4px auto 16px;
+        margin: 8px auto 20px;
       }
       .sheet h1 {
         margin: 0 0 12px;
@@ -411,10 +411,10 @@
       }
       #rlg {
         position: absolute;
-        right: 3%;
-        top: 5%;
-        width: 38%;
-        height: 18%;
+        right: 24px;
+        top: 26px;
+        width: 36%;
+        height: 17%;
         object-fit: contain;
         object-position: center;
         pointer-events: none;
@@ -424,7 +424,7 @@
       .bub {
         position: absolute;
         right: 0;
-        bottom: calc(100% - 2px);
+        bottom: calc(100% - 10px);
         width: 130px;
         transform-origin: 25% 100%;
         animation: bp 0.35s ease-out;
@@ -763,20 +763,20 @@
         position: absolute;
         z-index: 0;
         left: calc(12px + (100% - 24px) * 0.33);
-        top: 40%;
+        bottom: calc(24px + var(--rth, 56px));
         width: calc(var(--w) * 0.56);
         height: calc(var(--w) * 0.56);
-        transform: translate(-50%, -50%);
+        transform: translateX(-50%);
         pointer-events: none;
       }
       .mg {
         position: absolute;
         z-index: 0;
         left: calc(12px + (100% - 24px) * 0.33);
-        top: 40%;
+        bottom: calc(24px + var(--rth, 56px));
         width: calc(var(--w) * 0.54);
         height: calc(var(--w) * 0.54);
-        transform: translate(-50%, -50%);
+        transform: translateX(-50%);
         pointer-events: none;
       }
       .mg.t2 { width: calc(var(--w) * 0.57); height: calc(var(--w) * 0.57); }
@@ -1104,6 +1104,16 @@
           else img.addEventListener("load", function () { trim(img); });
         }
         document.querySelectorAll("img.logo, #rlg").forEach(go);
+      })();
+      (function () {
+        var rt = document.getElementById("rt"),
+          rf = document.getElementById("rf");
+        function u() {
+          rf.style.setProperty("--rth", rt.offsetHeight + "px");
+        }
+        if (window.ResizeObserver) new ResizeObserver(u).observe(rt);
+        addEventListener("resize", u);
+        u();
       })();
       window.onerror = function (m, u, l) {
         var s = document.getElementById("s");
