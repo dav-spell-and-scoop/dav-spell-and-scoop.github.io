@@ -411,10 +411,10 @@
       }
       #rlg {
         position: absolute;
-        right: 4%;
-        top: 3%;
-        width: 34%;
-        height: 17%;
+        right: 3%;
+        top: 2.5%;
+        width: 38%;
+        height: 19%;
         object-fit: contain;
         object-position: center;
         pointer-events: none;
@@ -1067,6 +1067,44 @@
       </div>
     </div>
     <script>
+      (function () {
+        function trim(img) {
+          if (img.dataset.t) return;
+          img.dataset.t = "1";
+          try {
+            var w = img.naturalWidth, h = img.naturalHeight;
+            if (!w || !h) return;
+            var c = document.createElement("canvas");
+            c.width = w;
+            c.height = h;
+            var x = c.getContext("2d");
+            x.drawImage(img, 0, 0);
+            var d = x.getImageData(0, 0, w, h).data;
+            var x0 = w, y0 = h, x1 = -1, y1 = -1;
+            for (var yy = 0; yy < h; yy++)
+              for (var xx = 0; xx < w; xx++)
+                if (d[(yy * w + xx) * 4 + 3] > 10) {
+                  if (xx < x0) x0 = xx;
+                  if (xx > x1) x1 = xx;
+                  if (yy < y0) y0 = yy;
+                  if (yy > y1) y1 = yy;
+                }
+            if (x1 < 0) return;
+            var cw = x1 - x0 + 1, ch = y1 - y0 + 1;
+            if (cw * ch > w * h * 0.9) return;
+            var o = document.createElement("canvas");
+            o.width = cw;
+            o.height = ch;
+            o.getContext("2d").drawImage(c, x0, y0, cw, ch, 0, 0, cw, ch);
+            img.src = o.toDataURL("image/png");
+          } catch (e) {}
+        }
+        function go(img) {
+          if (img.complete && img.naturalWidth) trim(img);
+          else img.addEventListener("load", function () { trim(img); });
+        }
+        document.querySelectorAll("img.logo, #rlg").forEach(go);
+      })();
       window.onerror = function (m, u, l) {
         var s = document.getElementById("s");
         if (s)
