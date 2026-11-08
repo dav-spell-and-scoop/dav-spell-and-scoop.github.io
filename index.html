@@ -283,12 +283,12 @@
       }
       .logo {
         display: block;
-        width: 100%;
-        max-width: 100%;
+        width: auto;
         height: auto;
-        max-height: 170px;
+        max-width: 66%;
+        max-height: 92px;
         object-fit: contain;
-        margin: 0 auto 12px;
+        margin: 4px auto 16px;
       }
       .sheet h1 {
         margin: 0 0 12px;
@@ -412,9 +412,9 @@
       #rlg {
         position: absolute;
         right: 3%;
-        top: 2.5%;
+        top: 5%;
         width: 38%;
-        height: 19%;
+        height: 18%;
         object-fit: contain;
         object-position: center;
         pointer-events: none;
@@ -1103,7 +1103,7 @@
           if (img.complete && img.naturalWidth) trim(img);
           else img.addEventListener("load", function () { trim(img); });
         }
-        document.querySelectorAll("#rlg").forEach(go);
+        document.querySelectorAll("img.logo, #rlg").forEach(go);
       })();
       window.onerror = function (m, u, l) {
         var s = document.getElementById("s");
